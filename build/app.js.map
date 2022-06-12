@@ -1,0 +1,1 @@
+{"version":3,"sources":["../js/app.js"],"names":["footer","a"],"mappings":"aAAA,GAAMA,QAAS,eAAf,CACMC,EAAI,UADV","file":"app.js","sourcesContent":["const footer = 'Footer stuff!';\nconst a = 'Hi there';"]}

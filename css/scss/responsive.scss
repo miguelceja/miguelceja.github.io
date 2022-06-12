@@ -1,0 +1,74 @@
+/*     Responsive CSS     */
+
+@media screen and (max-width: 630px) {
+
+.page-wrap {
+  padding:0 1em; 
+}
+
+.welcome-blurb {
+  max-width: 100%;
+  margin-right: 1em; 
+  border-bottom:none;  
+}
+
+.welcome-blurb h1 {
+  float:none;
+  text-align: center;
+}
+
+.welcome-blurb h2 {
+  float:none;
+  clear:both;
+  max-width:100%;
+  text-align: center;
+}
+
+.miguel-pic {
+  max-width:5em;
+  margin:0 auto;
+  float: none;
+  display:block;
+  padding-top: 0em;
+  padding-left:0em;
+  padding-bottom:.5em;
+} 
+ 
+}    
+
+
+@media screen and (max-width: 650px) {
+ 
+ h3 {
+  padding-top: 1.5em;  }
+ 
+.projects {
+  padding-bottom: 0em; } 
+ 
+.project-desc-wrapper {
+  float:none;
+  clear:both;
+  width:100%;
+  padding-left:0em;
+  padding-top:.5em;
+  padding-bottom:1em;
+}
+ 
+
+p.project-desc {
+  padding-bottom:.1em;
+  font-size:1em;
+}
+
+.skill-container {
+  margin:1em 0;
+}
+
+.skill-container p {
+  padding:.5em 0 .5em 1em;
+  font-size:.8em;
+}
+ 
+ 
+ 
+}
