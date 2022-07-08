@@ -10,8 +10,9 @@ window.onload = (function () {
     setupReset();
   }
 
-  // TODO: Replace "O" and "X" with marios and luigi's. Some pun in tic tac toe
-  // TODO: Make responsive
+  // TODO: Replace "O" and "X" with Mario and Luigi.
+  // TODO: Make layout responsive
+  // TODO: Refactor/cleanup code!
 
   function updateGameStatusText(isNewGame) {
     if (isDraw) {
@@ -46,7 +47,6 @@ window.onload = (function () {
 
     $.each(buttons, (i, button) => {
       $(button).on('click', function (e) {
-        // If turn is even, then it's O's turn and you should choose a random open square.
         updateSquare(button, buttons);
       });
     });
@@ -89,7 +89,7 @@ window.onload = (function () {
         }
       });
 
-      // Choose random available square and recreate "chosen square"
+      // Choose random available square and recreate a "chosen square"
       const availableSquaresLength = availableSquares.length;
       const randomIndex = Math.floor(Math.random() * availableSquaresLength);
       const computerSelection = $(availableSquares[randomIndex]);
@@ -110,10 +110,10 @@ window.onload = (function () {
       const buttons = $('.button');
 
       $.each(buttons, (i, button) => {
-        $(button).text('').removeClass('winning-square');
-
-        // check if we have a winner
-        $(button).attr('disabled', false);
+        $(button)
+          .text('')
+          .removeClass('winning-square')
+          .attr('disabled', false);
       });
 
       isDraw = false;
