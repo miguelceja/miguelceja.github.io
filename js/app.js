@@ -22,22 +22,22 @@ window.onload = (function () {
       turnNumber++;
     } else if (isGameOver) {
       const winner = player === 'O' ? 'I' : 'You';
-      const finalMsg = player === 'O' ? 'Better luck next time!' : 'Rematch?';
+      const finalMsg = player === 'O' ? 'Wanna play again?' : 'Rematch?';
 
       $('.game-status').html(
-        `Nice game!
+        `Nice game! 🙌
         <br>${winner} won in ${Math.round(turnNumber / 2)} turns!
         <br>${finalMsg}`
       );
 
       $('.wrapper').addClass('game-over');
     } else if (isNewGame) {
-      $('.game-status').text("It's your turn.");
+      $('.game-status').text('Your move.');
     } else {
       player = player === 'X' ? 'O' : 'X';
       turnNumber++;
 
-      const turnMsg = player === 'X' ? "It's your turn." : "I'm thinking...";
+      const turnMsg = player === 'X' ? 'Your move.' : "I'm thinking...";
       $('.game-status').text(turnMsg);
     }
   }

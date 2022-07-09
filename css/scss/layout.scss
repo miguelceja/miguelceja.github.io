@@ -155,10 +155,11 @@ img {
 }
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   line-height: 1.5;
   border-top: 5px #5a9271 solid;
   -webkit-text-size-adjust: 100%;
+  background: #f0f0f0;
 }
 
 h1,
@@ -172,7 +173,8 @@ h6 {
 }
 
 h1 {
-  font-size: 4em;
+  font-size: 6em;
+  font-family: 'Merriweather', serif;
 }
 
 h2 {
@@ -180,7 +182,9 @@ h2 {
 }
 
 h3 {
+  font-family: 'Merriweather', serif;
   font-size: 1.6rem;
+
   padding-bottom: 0.5em;
   padding-top: 3em;
   border-bottom: 1px solid #999;
@@ -200,6 +204,7 @@ p {
 }
 
 span.pop {
+  font-weight: bold;
   color: #5a9271;
 }
 
