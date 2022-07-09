@@ -10,10 +10,6 @@ window.onload = (function () {
     setupReset();
   }
 
-  // TODO: Replace "O" and "X" with Mario and Luigi.
-  // TODO: Make layout responsive
-  // TODO: Refactor/cleanup code!
-
   function updateGameStatusText(isNewGame) {
     if (isDraw) {
       $('.game-status').text(`It's a draw!  Hit reset to play again.`);
