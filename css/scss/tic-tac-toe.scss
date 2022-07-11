@@ -46,16 +46,18 @@
   border: 3px solid #999;
   width: 80px;
   height: 40px;
-  background: #add6ad;
+  background: #ccc7c7;
   font-size: 1rem;
+  font-weight: bold;
   margin-bottom: 20px;
-  color: #222;
+  -webkit-transition: 0.3s all;
   transition: 0.3s all;
+  text-transform: uppercase;
 }
 
 .reset-game:hover {
   background: #999;
-  border-color: #222;
+  border-color: rgb(21, 21, 21);
   color: #fff;
   cursor: pointer;
 }
@@ -66,8 +68,10 @@
 }
 
 .game-status {
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-align: center;
+  margin-bottom: 20px;
+  color: #5a9271;
 }
 
 @media (min-width: 650px) {
