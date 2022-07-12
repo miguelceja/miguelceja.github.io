@@ -25,7 +25,7 @@
           <h1>Hola</h1>
           <img class="miguel-pic" src="images/me.png" />
           <h2>
-            I&apos;m <span class="pop">Miguel</span>, a
+            I&apos;m <span class="pop red">Miguel</span>, a
             <span class="pop"> father</span>, a
             <span class="pop">husband</span>, and a
             <span class="pop">web developer</span> from the San Francisco Bay
@@ -64,7 +64,39 @@
 
       <div class="main-content">
         <h3>Wanna play me in Tic-Tac-Toe? (I'll go easy 😉)</h3>
+
         <p>Just a little coding challenge I did for funsies.</p>
+        <p>
+          This was a great lesson in not judging a project by its description. I
+          mean, Tic-Tac-Toe: nine squares, get three in a row, you win. Simple
+          enough...
+        </p>
+        <p>Right?</p>
+        <p>
+          So I thought, ok, basically logic should be: a player clicks on a
+          square, then the "computer" chooses an available square to simulate an
+          opponent until either letter has three in a row. Hardest part might be
+          just keeping track of the game state, and I'm done...
+        </p>
+        <p>Right?</p>
+        <p>
+          Well, yes, that would satisfy basic game play. But what if we wanted
+          to make it more challenging? What if I wanted to detect when the
+          player has two in a row - then I should probably add logic to block
+          that win. What if the computer has two in a row - I should probably
+          add logic to choose the remaining square. And wouldn't it be
+          interesting to see at a glance all the turn numbers? Also, if the
+          middle square is available after the first move, the computer should
+          take it since it's the most advantageous square. This is where things
+          got fun!
+        </p>
+
+        <p>
+          I decided to use jQuery just to move faster and focus on the actual
+          logic. There are certainly improvements that can be made, but not too
+          bad for a fun little coding challenge. Let's play!
+        </p>
+
         <h4 class="game-status">Your move.</h4>
         <div class="tic-tac-toe-wrap">
           <div class="game-grid">

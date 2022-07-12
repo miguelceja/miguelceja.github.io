@@ -29,12 +29,12 @@ window.onload = (function () {
   init();
 
   function init() {
+    console.log(`Hola! 👋`);
     setupGame();
     setupReset();
   }
 
   // TODO: Replace "O" and "X" with Mario and Luigi or maybe some fun emojis.
-  // TODO: Move the messages to the left or right and absolutely positioned if there is room.
   // TODO: Refactor/cleanup code!
 
   function updateGameStatusText(isNewGame) {
@@ -113,8 +113,14 @@ window.onload = (function () {
       // Choose random available square and recreate a "chosen square"
       $(computerSelection)
         .text(player)
+        .addClass('red-bg')
         .append(`<span class="turn-number">${turnNumber}</span>`)
         .attr('disabled', true);
+
+      // Flash of red background to draw the eye to computer's chosen square.
+      setTimeout(function () {
+        $(computerSelection).removeClass('red-bg');
+      }, 500);
 
       checkStatus();
       updateGameStatusText();
@@ -131,8 +137,18 @@ window.onload = (function () {
       return centerSquare;
     }
 
-    // Otherwise, get current state of square selections
+    // Get current available squares
     const buttons = $('.button');
+    const availableSquares = [];
+
+    $.each(buttons, (i, v) => {
+      const isAvailableSquare = $(v).attr('disabled') !== 'disabled';
+
+      if (isAvailableSquare) {
+        availableSquares.push(v);
+      }
+    });
+
     const squaresData = [];
 
     $.each(buttons, (i, button) => {
@@ -141,7 +157,14 @@ window.onload = (function () {
       squaresData.push(squarePlayer); // + 1 to match winningRows numbers
     });
 
-    // Loop through possible winning rows;
+    // Offense: Check if there is a row with two O's, if so, choose remaining square to complete row.
+    const targetSquare = getTargetSquare(squaresData);
+
+    if (targetSquare) {
+      return targetSquare;
+    }
+
+    // Defense: Loop through possible winning rows;
     for (let i = 0; i < winningRows.length; i++) {
       const row = winningRows[i]; // ['X1', 'X2', 'X3'], etc.
 
@@ -177,24 +200,63 @@ window.onload = (function () {
     }
 
     // Otherwise, just choose a random available square.
-    // TODO: Add logic to prioritize empty rows or rows where there is already an "O".
-    return getRandomSquare();
+    return getRandomSquare(availableSquares);
   }
 
-  function getRandomSquare() {
-    const availableSquares = [];
-    const buttons = $('.button');
-    $.each(buttons, (i, v) => {
-      const isAvailableSquare = $(v).attr('disabled') !== 'disabled';
+  function getTargetSquare(squaresData) {
+    let targetRows = [];
 
-      if (isAvailableSquare) {
-        availableSquares.push(v);
+    // Loop through possible winning rows and see if there are any "O"'s in any of them.
+    for (let i = 0; i < winningRows.length; i++) {
+      const row = winningRows[i]; // ['O1', 'O2', 'O3'], etc.
+
+      // If row has an X, then ignore this row for now as it's not ideal. If row has two O's, then get the available square and choose it.
+      let hasXinRow = false;
+
+      row.forEach((square) => {
+        let squareNumb = parseInt(square[1], 10);
+        squareNumb = squareNumb - 1; // Minus 1 to match class names.
+        const squareText = $(`.button-${squareNumb}`).text();
+
+        if (squareText.includes('X')) {
+          hasXinRow = true;
+        }
+      });
+
+      const osInRow = row.filter(
+        (square) => square.includes('O') && squaresData.includes(square)
+      );
+
+      if (!hasXinRow && osInRow.length === 2) {
+        targetRows.push(row);
       }
-    });
+    }
 
+    const targetRow = targetRows[0];
+
+    let targetSquare = null;
+
+    if (targetRow) {
+      // If we have a target row, we need to figure out where to put the O.
+
+      targetRow.forEach((square) => {
+        let squareNumb = parseInt(square[1], 10);
+        squareNumb = squareNumb - 1; // Minus 1 to match class names.
+        const squareText = $(`.button-${squareNumb}`).text();
+
+        // If no squareText, it's an available square
+        if (!squareText) {
+          targetSquare = $(`.button-${squareNumb}`);
+        }
+      });
+    }
+
+    return targetSquare;
+  }
+
+  function getRandomSquare(availableSquares) {
     const availableSquaresLength = availableSquares.length;
     const randomIndex = Math.floor(Math.random() * availableSquaresLength);
-
     const randomSquare = $(availableSquares[randomIndex]);
 
     return randomSquare;

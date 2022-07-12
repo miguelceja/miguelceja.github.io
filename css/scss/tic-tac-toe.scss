@@ -26,11 +26,15 @@
   font-size: 2rem;
   border: none;
   color: #fff;
-  transition: 0.3s all;
+  transition: 0.5s all;
 }
 
 .button:hover:not(:disabled) {
   background: #add6ad;
+}
+
+.red-bg {
+  background: #e46464 !important;
 }
 
 .turn-number {
