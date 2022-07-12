@@ -20,7 +20,7 @@
 
   <body>
     <div class="page-wrap">
-      <div class="main-content">
+      <div class="section">
         <div class="welcome-blurb">
           <h1>Hola</h1>
           <img class="miguel-pic" src="images/me.png" />
@@ -34,7 +34,7 @@
         </div>
       </div>
 
-      <div class="main-content">
+      <div class="section">
         <p class="p2-2r">
           Code, design, and the opportunity to solve tough problems are what get
           me up the morning (that and a
@@ -47,9 +47,9 @@
           telling a great story through seamless design and code.
         </p>
       </div>
-      <!-- end main content -->
+      <!-- end section -->
 
-      <div class="main-content">
+      <div class="section">
         <div class="favorites">
           <h3>Some of my favorite things</h3>
           <p>
@@ -60,25 +60,27 @@
           </p>
         </div>
       </div>
-      <!-- end main content -->
+      <!-- end section -->
 
-      <div class="main-content">
+      <div class="section">
         <h3>Wanna play me in Tic-Tac-Toe? (I'll go easy 😉)</h3>
 
         <p>Just a little coding challenge I did for funsies.</p>
         <p>
-          This was a great lesson in not judging a project by its description. I
-          mean, Tic-Tac-Toe: nine squares, get three in a row, you win. Simple
-          enough...
+          This was a great reminder to never assume a project will be simple
+          based on a simple description. I mean, Tic-Tac-Toe: you have nine
+          squares, two players, each player alternates selecting a square until
+          one has three in a row. Simple enough.
         </p>
         <p>Right?</p>
         <p>
-          So I thought, ok, basically logic should be: a player clicks on a
-          square, then the "computer" chooses an available square to simulate an
-          opponent until either letter has three in a row. Hardest part might be
-          just keeping track of the game state, and I'm done...
+          I thought, OK, so basically the logic should be: a player clicks on a
+          square, then the game automatically chooses an available square after
+          that to simulate an opponent, then rinse and repeat until either
+          letter has three in a row. Hardest part might be just keeping track of
+          the game state after each move. Simple enough.
         </p>
-        <p>Right?</p>
+        <p>Right?!</p>
         <p>
           Well, yes, that would satisfy basic game play. But what if we wanted
           to make it more challenging? What if I wanted to detect when the
@@ -86,18 +88,20 @@
           that win. What if the computer has two in a row - I should probably
           add logic to choose the remaining square. And wouldn't it be
           interesting to see at a glance all the turn numbers? Also, if the
-          middle square is available after the first move, the computer should
-          take it since it's the most advantageous square. This is where things
-          got fun!
+          middle square is available, the computer should take it as soon as
+          possible since it is the most advantageous square. This is where
+          things got fun!
         </p>
 
         <p>
           I decided to use jQuery just to move faster and focus on the actual
-          logic. There are certainly improvements that can be made, but not too
-          bad for a fun little coding challenge. Let's play!
+          logic. There are certainly improvements that can be made (and maybe a
+          bug or two 🤣), but not too bad for a fun little coding challenge.
         </p>
 
-        <h4 class="game-status">Your move.</h4>
+        <p>Let's play!</p>
+
+        <h4 class="game-status">Your move. 😊</h4>
         <div class="tic-tac-toe-wrap">
           <div class="game-grid">
             <button class="button button-0"></button>
@@ -115,9 +119,9 @@
         </div>
         <!-- End tic-tac-toe-wrap -->
       </div>
-      <!-- end main content -->
+      <!-- end section -->
 
-      <div class="main-content">
+      <div class="section">
         <footer>
           <div class="footer-inner">
             <h3>Where you can find me</h3>
@@ -135,6 +139,7 @@
       </div>
     </div>
     <!-- end page-wrap -->
+
     <script
       src="https://code.jquery.com/jquery-3.3.1.js"
       integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
