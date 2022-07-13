@@ -31,6 +31,8 @@ window.onload = (function () {
     console.log(`Hola! 👋`);
     setupGame();
     setupReset();
+
+    $('.jump-to-game').on('click', jumpToGame);
   }
 
   // TODO: Replace "O" and "X" with Mario and Luigi or maybe some fun emojis.
@@ -83,12 +85,7 @@ window.onload = (function () {
   function updateSquare(button, buttons) {
     // Bring full game into view so player can see game messages and reset button.
     if (turnNumber === 1) {
-      $([document.documentElement, document.body]).animate(
-        {
-          scrollTop: $('#game').offset().top,
-        },
-        500
-      );
+      jumpToGame();
     }
 
     $(button).text(player);
@@ -333,5 +330,14 @@ window.onload = (function () {
     if (playedSquares.length === 9 && !isGameOver) {
       isDraw = true;
     }
+  }
+
+  function jumpToGame() {
+    $([document.documentElement, document.body]).animate(
+      {
+        scrollTop: $('#game').offset().top,
+      },
+      500
+    );
   }
 })();
