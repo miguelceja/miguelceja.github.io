@@ -6,6 +6,7 @@ window.onload = (function () {
   let player = 'X';
   let turnNumber = 1;
   let isComputerFirstMove = true;
+  let winner = '';
 
   const winningRows = [
     ['X1', 'X2', 'X3'],
@@ -45,12 +46,12 @@ window.onload = (function () {
       player = player === 'X' ? 'O' : 'X';
       turnNumber++;
     } else if (isGameOver) {
-      const winner = player === 'O' ? 'I' : 'You';
-      const finalMsg = player === 'O' ? 'Wanna play again?' : 'Rematch?';
+      const pronoun = winner === 'O' ? 'I' : 'You';
+      const finalMsg = winner === 'O' ? 'Wanna play again?' : 'Rematch?';
 
       $('.game-status').html(
         `🙌 Nice game!
-        ${winner} won in <span class="red">${Math.round(
+        ${pronoun} won in <span class="red">${Math.round(
           turnNumber / 2
         )}</span> turns!
         ${finalMsg}`
@@ -152,8 +153,8 @@ window.onload = (function () {
     const squaresData = [];
 
     $.each(buttons, (i, button) => {
-      const player = $(button).text()[0] || '';
-      const squarePlayer = player ? `${player}${i + 1}` : '';
+      const playerInSquare = $(button).text()[0] || '';
+      const squarePlayer = playerInSquare ? `${playerInSquare}${i + 1}` : '';
       squaresData.push(squarePlayer); // + 1 to match winningRows numbers
     });
 
@@ -291,8 +292,8 @@ window.onload = (function () {
     const squaresData = [];
 
     $.each(buttons, (i, button) => {
-      const player = $(button).text()[0] || '';
-      const squarePlayer = player ? `${player}${i + 1}` : '';
+      const playerInSquare = $(button).text()[0] || '';
+      const squarePlayer = playerInSquare ? `${playerInSquare}${i + 1}` : '';
       squaresData.push(squarePlayer); // + 1 to match winningRows numbers
     });
 
@@ -307,6 +308,7 @@ window.onload = (function () {
 
       if (playerRows.length === 3) {
         isGameOver = true;
+        winner = player;
 
         row.forEach((square) => {
           const squareNumb = parseInt(square[1] - 1, 10); // -1 to match html class numbers

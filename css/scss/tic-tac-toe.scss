@@ -71,11 +71,44 @@
   color: #222;
 }
 
+.game-status-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.game-status-msg-wrap {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.miguel-avatar {
+  max-width: 60px;
+}
+
 .game-status {
+  margin-bottom: 20px;
   font-size: 1.1rem;
   text-align: center;
-  margin-bottom: 20px;
   color: #5a9271;
+  background-color: #e2dfdf;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #5a9271;
+}
+
+.bottom-point {
+  width: 20px;
+  height: 20px;
+  background-color: #e2dfdf;
+  position: absolute;
+  bottom: -29px;
+  left: 52%;
+  transform: rotate(134deg);
+  border-right: 1px solid #5a9271;
+  border-top: 1px solid #5a9271;
 }
 
 @media (min-width: 650px) {
