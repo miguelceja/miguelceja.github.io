@@ -81,6 +81,16 @@ window.onload = (function () {
   }
 
   function updateSquare(button, buttons) {
+    // Bring full game into view so player can see game messages and reset button.
+    if (turnNumber === 1) {
+      $([document.documentElement, document.body]).animate(
+        {
+          scrollTop: $('#game').offset().top,
+        },
+        500
+      );
+    }
+
     $(button).text(player);
     $(button).append(`<span class="turn-number">${turnNumber}</span>`);
 
