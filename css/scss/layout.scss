@@ -123,7 +123,24 @@ section {
 
 ol,
 ul {
+  position: relative;
   list-style: none;
+  margin: 0 40px 40px 40px;
+}
+
+ul li {
+  color: rgb(61, 61, 61);
+  margin-bottom: 20px;
+}
+
+ul li::before {
+  content: '•';
+  color: #5a9271;
+  display: inline-block;
+  width: 1em;
+  left: -16px;
+  font-size: 0.9em;
+  position: absolute;
 }
 
 blockquote,
