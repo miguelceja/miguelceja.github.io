@@ -1,3 +1,18 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
 }
+
+.form-wrapper {
+  max-width: 400px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.form-wrapper label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-wrapper input {
+  max-width: 100px;
+}

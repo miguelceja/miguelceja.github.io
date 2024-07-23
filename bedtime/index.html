@@ -6,7 +6,17 @@
     <title>Time Calc</title>
   </head>
   <body>
-    <h1>Loading...</h1>
+    <h1>Loading... (make sure to provide a time value)</h1>
+
+    <div class="form-wrapper">
+      <label for="waketime">Woke Up From Nap</label>
+      <input type="text" id="waketime" />
+      <button class="update-time">Update</button>
+    </div>
+
+    <hr />
+
+    <div id="main"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.12/dayjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.12/plugin/utc.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.12/plugin/advancedFormat.min.js"></script>

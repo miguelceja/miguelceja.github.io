@@ -2,43 +2,58 @@ dayjs.extend(dayjs_plugin_advancedFormat);
 dayjs.extend(dayjs_plugin_utc);
 dayjs.extend(dayjs_plugin_timezone);
 
-const timeParam = new URLSearchParams(window.location.search).get("time");
+let timeParam = new URLSearchParams(window.location.search).get('time');
+
+if (!timeParam) {
+  throw new Error(`No time parameter found in URL`);
+}
+
+timeParam = timeParam.toUpperCase();
+
+document.querySelector('#waketime').value = timeParam;
+
 const wakeWindow =
-  new URLSearchParams(window.location.search).get("window") || "6";
+  new URLSearchParams(window.location.search).get('window') || '6';
 
-function addHoursToTime(time, hoursToAdd, minutesToAdd) {
-  time = time.replace("PM", " PM").replace("AM", " AM");
+function addTime(time, hoursToAdd, minutesToAdd) {
+  time = time.replace('PM', ' PM').replace('AM', ' AM');
 
-  const today = dayjs().format("M/DD/YY");
+  const today = dayjs().format('M/DD/YY');
   const formattedTime = dayjs(`${today} ${time}`, `M/DD/YY h:mmA`);
 
   let newTime;
 
   // Add hours or minutes
   if (minutesToAdd) {
-    newTime = formattedTime.subtract(hoursToAdd, "minute");
+    newTime = formattedTime.subtract(hoursToAdd, 'minute');
   } else {
-    newTime = formattedTime.add(hoursToAdd, "hour");
+    newTime = formattedTime.add(hoursToAdd, 'hour');
   }
 
   // Return the new time in the same format
-  return newTime.format("h:mmA");
+  return newTime.format('h:mmA');
 }
 
-const sleep = addHoursToTime(timeParam, wakeWindow);
-console.log("asleep", sleep);
+const sleep = addTime(timeParam, wakeWindow);
+console.log('asleep', sleep);
 
-const bed = addHoursToTime(sleep, 10, true);
-console.log("bed", bed);
+const bed = addTime(sleep, 10, true);
+console.log('bed', bed);
 
-const bathStoryTime = addHoursToTime(bed, 19, true);
-console.log("bathStoryTime", bathStoryTime);
+const bathStoryTime = addTime(bed, 19, true);
+console.log('bathStoryTime', bathStoryTime);
 
-const dadTime = addHoursToTime(bed, 7, true);
-console.log("dadTime", dadTime);
+const dadTime = addTime(bed, 7, true);
+console.log('dadTime', dadTime);
 
-const dinner = addHoursToTime(sleep, 52, true);
-console.log("dinner", dinner);
+const dinner = addTime(sleep, 52, true);
+console.log('dinner', dinner);
+
+const readyForBedBathNight = addTime(bed, 14, true);
+console.log('readyForBedBathNight', readyForBedBathNight);
+
+const readyForBedNotaBathNight = addTime(bed, 24, true);
+console.log('readyForBedNotaBathNight', readyForBedNotaBathNight);
 
 const html = `
   <div>
@@ -48,10 +63,32 @@ const html = `
     <p>👨‍🍼 Dad: <b>${dadTime}</b></p>
     <p>🛏️ Bed: <b>${bed}</b></p>
     <p>😴 Sleep: <b>${sleep}</b></p>
+    <hr />
+    <p>Ready For Bed Bath Night: <b>${readyForBedBathNight}</b></p>
+    <p>Ready For Bed Story Night: <b>${readyForBedNotaBathNight}</b></p>
   </div>
 `;
 
-document.body.innerHTML = html;
+document.querySelector('h1').innerText = '';
+document.querySelector('#main').innerHTML = html;
+
+const updateButton = document.querySelector('.update-time');
+
+updateButton.addEventListener('click', () => {
+  const value = document.querySelector('#waketime').value;
+
+  if (value) {
+    updateQueryParam(value);
+    window.location.reload();
+  }
+});
+
+function updateQueryParam(newTime) {
+  newTime = newTime.toUpperCase();
+  const url = new URL(window.location.href); // Get the current URL
+  url.searchParams.set('time', newTime); // Set the new value for the "time" parameter
+  window.history.replaceState({}, '', url); // Update the URL without reloading the page
+}
 
 // Bed: 6:50
 // Dad: 6:43
