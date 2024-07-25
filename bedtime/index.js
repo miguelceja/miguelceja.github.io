@@ -13,7 +13,7 @@ timeParam = timeParam.toUpperCase();
 document.querySelector('#waketime').value = timeParam;
 
 const wakeWindow =
-  new URLSearchParams(window.location.search).get('window') || '6';
+  new URLSearchParams(window.location.search).get('window') || '5.5';
 
 function addTime(time, hoursToAdd, minutesToAdd) {
   time = time.replace('PM', ' PM').replace('AM', ' AM');
@@ -40,13 +40,16 @@ console.log('asleep', sleep);
 const bed = addTime(sleep, 10, true);
 console.log('bed', bed);
 
-const bathStoryTime = addTime(bed, 19, true);
+const bathStoryTime = addTime(bed, 27, true);
+console.log('bathStoryTime', bathStoryTime);
+
+const storyTime = addTime(bed, 24, true);
 console.log('bathStoryTime', bathStoryTime);
 
 const dadTime = addTime(bed, 7, true);
 console.log('dadTime', dadTime);
 
-const dinner = addTime(sleep, 52, true);
+const dinner = addTime(sleep, 60, true);
 console.log('dinner', dinner);
 
 const readyForBedBathNight = addTime(bed, 14, true);
@@ -59,13 +62,13 @@ const html = `
   <div>
     <h1>Bedtime Routine</h1>
     <p>🍽️ Dinner: <b>${dinner}</b></p>
-    <p>🛁 Bath/Story Time: <b>${bathStoryTime}</b></p>
+    <hr />
+    <p>🛁 Bath: <b>${bathStoryTime}</b></p>
+    <p>📖 Story Time: <b>${storyTime}</b></p>
+    <hr />
     <p>👨‍🍼 Dad: <b>${dadTime}</b></p>
     <p>🛏️ Bed: <b>${bed}</b></p>
     <p>😴 Sleep: <b>${sleep}</b></p>
-    <hr />
-    <p>Ready For Bed Bath Night: <b>${readyForBedBathNight}</b></p>
-    <p>Ready For Bed Story Night: <b>${readyForBedNotaBathNight}</b></p>
   </div>
 `;
 
